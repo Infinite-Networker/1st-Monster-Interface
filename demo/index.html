@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1st Monster Interface — Cherry Computer Ltd.</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ═══════════════════ SCANLINES OVERLAY ═══════════════════════ -->
+<div class="scanlines"></div>
+<div class="noise"></div>
+
+<!-- ═══════════════════ HEADER ═══════════════════════════════════ -->
+<header class="hud-header">
+  <div class="logo-area">
+    <img src="https://www.genspark.ai/api/files/s/1VXmqF2o?cache_control=3600" alt="1st Monster Interface Logo" class="header-logo" onerror="this.style.display='none'"/>
+    <div class="title-block">
+      <div class="cherry-label">CHERRY COMPUTER LTD.</div>
+      <h1 class="main-title">1<span class="st">ST</span> MONSTER <span class="highlight">INTERFACE</span></h1>
+      <div class="subtitle">Stardust Augmental Platform · Interactive Demo</div>
+    </div>
+  </div>
+  <div class="status-pills">
+    <span class="pill pill-green" id="pill-neural">🧠 NEURAL: ONLINE</span>
+    <span class="pill pill-cyan" id="pill-ar">🌐 AR: ACTIVE</span>
+    <span class="pill pill-purple" id="pill-vr">🕶️ VR: READY</span>
+    <span class="pill pill-pink" id="pill-haptic">🤲 HAPTIC: ON</span>
+  </div>
+</header>
+
+<!-- ═══════════════════ MAIN GRID ════════════════════════════════ -->
+<main class="hud-grid">
+
+  <!-- ── NEURAL WAVEFORM PANEL ─────────────────────────────────── -->
+  <section class="panel panel-neural" id="panel-neural">
+    <div class="panel-header">
+      <span class="panel-icon">🧠</span>
+      <span>Neural Signal Monitor</span>
+      <span class="live-dot"></span>
+    </div>
+    <canvas id="neuralCanvas" width="480" height="120"></canvas>
+    <div class="neural-stats">
+      <div class="stat-box">
+        <div class="stat-label">Band</div>
+        <div class="stat-value" id="neural-band">GAMMA</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Confidence</div>
+        <div class="stat-value" id="neural-conf">94%</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Intent</div>
+        <div class="stat-value" id="neural-intent">SELECT</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Session Acc.</div>
+        <div class="stat-value" id="neural-acc">97%</div>
+      </div>
+    </div>
+    <div class="last-thought" id="last-thought">» Waiting for neural input...</div>
+  </section>
+
+  <!-- ── PROJECTION KEYBOARD PANEL ─────────────────────────────── -->
+  <section class="panel panel-keyboard" id="panel-keyboard">
+    <div class="panel-header">
+      <span class="panel-icon">⌨️</span>
+      <span>Holographic Projection Keyboard</span>
+      <div class="layout-switcher">
+        <button class="layout-btn active" data-layout="professional">PRO</button>
+        <button class="layout-btn" data-layout="gaming">GAME</button>
+        <button class="layout-btn" data-layout="casual">CASUAL</button>
+        <button class="layout-btn" data-layout="creative">CREATE</button>
+      </div>
+    </div>
+    <div class="keyboard-wrapper">
+      <div id="keyboard-render" class="keyboard-projection"></div>
+    </div>
+    <div class="typed-output">
+      <span class="typed-label">MID-AIR INPUT »</span>
+      <span id="typed-text" class="typed-text">_</span>
+    </div>
+  </section>
+
+  <!-- ── AR VIEWPORT ───────────────────────────────────────────── -->
+  <section class="panel panel-ar">
+    <div class="panel-header">
+      <span class="panel-icon">🌐</span>
+      <span>AR Environment Viewport</span>
+      <span class="ar-env-label" id="ar-env-label">INDOOR · HYBRID MODE</span>
+    </div>
+    <canvas id="arCanvas" width="480" height="220"></canvas>
+    <div class="ar-stats-row">
+      <div class="ar-stat"><span>Mesh Points</span><b id="ar-mesh">12,480</b></div>
+      <div class="ar-stat"><span>Anchors</span><b id="ar-anchors">9</b></div>
+      <div class="ar-stat"><span>Objects</span><b id="ar-objects">3</b></div>
+      <div class="ar-stat"><span>Occlusion</span><b>ENABLED</b></div>
+    </div>
+  </section>
+
+  <!-- ── GESTURE TRACKER ───────────────────────────────────────── -->
+  <section class="panel panel-gesture">
+    <div class="panel-header">
+      <span class="panel-icon">✋</span>
+      <span>Gesture Recognition</span>
+      <span class="live-dot"></span>
+    </div>
+    <canvas id="gestureCanvas" width="240" height="200"></canvas>
+    <div class="gesture-log" id="gesture-log">
+      <div class="gesture-entry">» System ready...</div>
+    </div>
+  </section>
+
+  <!-- ── SYSTEM STATS ──────────────────────────────────────────── -->
+  <section class="panel panel-stats">
+    <div class="panel-header">
+      <span class="panel-icon">📊</span>
+      <span>System Status</span>
+    </div>
+    <div class="stats-grid">
+      <div class="big-stat">
+        <div class="big-stat-label">UPTIME</div>
+        <div class="big-stat-value" id="uptime">00:00:00</div>
+      </div>
+      <div class="big-stat">
+        <div class="big-stat-label">NEURAL ACC.</div>
+        <div class="big-stat-value cyan" id="stat-neural-acc">97%</div>
+      </div>
+      <div class="big-stat">
+        <div class="big-stat-label">COGNITIVE SCORE</div>
+        <div class="big-stat-value purple" id="stat-cognitive">0</div>
+      </div>
+      <div class="big-stat">
+        <div class="big-stat-label">AR OBJECTS</div>
+        <div class="big-stat-value pink" id="stat-ar-obj">3</div>
+      </div>
+    </div>
+    <div class="gauge-row">
+      <div class="gauge-item">
+        <div class="gauge-label">Neural Load</div>
+        <div class="gauge-bar"><div class="gauge-fill cyan" id="g-neural" style="width:78%"></div></div>
+      </div>
+      <div class="gauge-item">
+        <div class="gauge-label">AR Render</div>
+        <div class="gauge-bar"><div class="gauge-fill purple" id="g-ar" style="width:62%"></div></div>
+      </div>
+      <div class="gauge-item">
+        <div class="gauge-label">VR Engine</div>
+        <div class="gauge-bar"><div class="gauge-fill pink" id="g-vr" style="width:45%"></div></div>
+      </div>
+      <div class="gauge-item">
+        <div class="gauge-label">Gesture Track</div>
+        <div class="gauge-bar"><div class="gauge-fill green" id="g-gesture" style="width:91%"></div></div>
+      </div>
+    </div>
+    <div class="action-log" id="action-log">
+      <div class="log-header">ACTION LOG</div>
+    </div>
+  </section>
+
+  <!-- ── HAPTIC PANEL ──────────────────────────────────────────── -->
+  <section class="panel panel-haptic">
+    <div class="panel-header">
+      <span class="panel-icon">🤲</span>
+      <span>Haptic Feedback Matrix</span>
+    </div>
+    <div class="haptic-grid">
+      <button class="haptic-btn" data-haptic="keypress" onclick="triggerHaptic('keypress')">KEY PRESS</button>
+      <button class="haptic-btn" data-haptic="double" onclick="triggerHaptic('double')">DOUBLE TAP</button>
+      <button class="haptic-btn" data-haptic="wave" onclick="triggerHaptic('wave')">WAVE</button>
+      <button class="haptic-btn" data-haptic="hold" onclick="triggerHaptic('hold')">HOLD</button>
+      <button class="haptic-btn texture" data-tex="glass" onclick="applyTexture('glass')">GLASS</button>
+      <button class="haptic-btn texture" data-tex="metal" onclick="applyTexture('metal')">METAL</button>
+      <button class="haptic-btn texture" data-tex="fabric" onclick="applyTexture('fabric')">FABRIC</button>
+      <button class="haptic-btn texture" data-tex="water" onclick="applyTexture('water')">WATER</button>
+    </div>
+    <div class="haptic-status">
+      <span>Active Texture: </span><b id="haptic-texture">NONE</b>
+      <span class="ml16">Pulses: </span><b id="haptic-pulses">0</b>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════════════════════ -->
+<footer class="hud-footer">
+  <div>© 2026 <strong>Cherry Computer Ltd.</strong> — All Rights Reserved</div>
+  <div>Stardust Augmental Platform · 1st Monster Interface v1.0.0</div>
+  <div>
+    <a href="https://github.com/Infinite-Networker/1st-Monster-Interface" target="_blank" class="footer-link">
+      🌌 GitHub Repository
+    </a>
+  </div>
+</footer>
+
+<script src="demo.js"></script>
+</body>
+</html>

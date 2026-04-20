@@ -1,0 +1,31 @@
+# 1st Monster Interface — Python Dependencies
+# Cherry Computer Ltd. — Stardust Augmental
+# ──────────────────────────────────────────
+
+# Core scientific computing
+numpy>=1.26.0
+scipy>=1.13.0
+
+# Neural signal processing
+mne>=1.7.0          # EEG/BCI signal analysis
+pyserial>=3.5        # Hardware serial communication
+
+# Machine learning (cognitive adapter)
+scikit-learn>=1.4.0
+tensorflow>=2.16.0   # Neural pattern recognition
+
+# AR/VR integration bridges
+opencv-python>=4.9.0  # Computer vision & gesture capture
+mediapipe>=0.10.0     # Hand & body landmark detection
+
+# Real-time data streaming
+websockets>=12.0
+asyncio-mqtt>=0.16.0
+
+# Visualization & demo
+matplotlib>=3.8.0
+rich>=13.7.0          # Beautiful terminal output
+
+# Testing
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
